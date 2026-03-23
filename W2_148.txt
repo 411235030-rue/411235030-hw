@@ -24,7 +24,7 @@ public:
                 l2 = l2->next;     
             }
             tail = tail->next;    
-
+}
         if (l1 != nullptr) {
             tail->next = l1;
         } else {
