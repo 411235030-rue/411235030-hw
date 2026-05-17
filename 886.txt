@@ -1,0 +1,45 @@
+class Solution {
+public
+    bool possibleBipartition(int n, vectorvectorint& dislikes) {
+
+        vectorvectorint graph(n + 1);
+
+        for (auto edge  dislikes) {
+            int u = edge[0];
+            int v = edge[1];
+            graph[u].push_back(v);
+            graph[v].push_back(u);
+        }
+
+        vectorint color(n + 1, 0);
+
+        for (int i = 1; i = n; i++) {
+
+            if (color[i] != 0){ continue; }
+
+            queueint q;
+            color[i] = 1;
+            q.push(i);
+
+            while (!q.empty()) {
+
+                int current = q.front();
+                q.pop();
+
+                for (int neighbor  graph[current]) {
+
+                    if (color[neighbor] == 0) {
+                        color[neighbor] = -color[current];
+                        q.push(neighbor);
+                    }
+
+                    else if (color[neighbor] == color[current]) {
+                        return false;
+                    }
+
+                }
+            }
+        }
+        return true;
+    }
+};
